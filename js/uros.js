@@ -118,11 +118,11 @@ document.querySelector("#sec-serv").innerHTML = nizSerIspis;
 //--------------------------------- Portfolio ---------------------------------
 
 var nizSecPorHr = ["img/work-1.jpg",""];
-var nizSecPorImgSrc = ["img/work-1.jpg","img/work-2.jpg","img/work-3.jpg","img/work-4.jpg","img/work-5.jpg","img/work-6.jpg"];
-var nizSecPorImgAlt = ["#","#","#","#","#","#"];
-var nizSecPorH = ["Lorem impsum dolor","Lorem impsum dolor","Lorem impsum dolor","Lorem impsum dolor","Lorem impsum dolor","Lorem impsum dolor"];
-var nizSecPorS = ["Web Design","Web Design","Web Design","Web Design","Web Design","Web Design"];
-var nizSecPorS1 = ["18 Sep. 2018","18 Sep. 2018","18 Sep. 2018","18 Sep. 2018","18 Sep. 2018","18 Sep. 2018"];
+var nizSecPorImgSrc = ["img/work-1.png","img/work-2.png","img/work-3.png","img/work-4.png","img/work-5.png","img/work-6.png"];
+var nizSecPorImgAlt = ["Site-1","Site-2","Site-3","Site-4","Site-5","Site-6"];
+var nizSecPorH = ["Bussines services","Welcome to our shop","Full web hosting","Best music band ever","Easy with our gym","Start bussines"];
+var nizSecPorS = ["Aria","Sock","Data web","Entro","Training studio","Big wing"];
+var nizSecPorS1 = ["23 Apr. 2017","18 Sep. 2017","12 Oct. 2019","3 Feb. 2020","27 Nov. 2020","8 Dec. 2021"];
 
 var nizSecPorIspis = "";
 
@@ -134,7 +134,7 @@ for(let i = 0; i < nizSecPorH.length ; i++){
                     <div class="work-img">
                         <img src="${nizSecPorImgSrc[i]}" alt="${nizSecPorImgAlt[i]}" class="img-fluid">
                     </div>
-                    <div class="work-content">
+                    <div class="work-content">//
                         <div class="row">
                             <div class="col-sm-8">
                                 <h2 class="w-title">"${nizSecPorH[i]}"</h2>
