@@ -30,7 +30,6 @@ for(let i = 0; i<nizAboutP.length ; i++){
     `;
 }
 aboutIspis += "</div>";
-console.log(aboutIspis);
 document.querySelector("#abt-me").innerHTML = aboutIspis;
 
 var nizSpanNaz = ["HTML","CSS","PHP","JAVASCRIPT"];
@@ -182,7 +181,103 @@ document.querySelector("#por-row").innerHTML = nizSecPorIspis;
 // document.querySelector("#testimonial-mf").innerHTML = nizSecIspis;
 
 
+//--------------------------------- Forma ---------------------------------
 
+var nizFormSp = ["ion-ios-location","ion-ios-telephone","ion-email"];
+var nizFormli = ["329 WASHINGTON ST BOSTON, MA 02108","(617) 557-0089","uros23@gmail.com"];
 
+var formIspis = "<p class='more-info'>You can reach me on the given social networks or at this location</p>"
 
+formIspis +="<ul class='list-ico'>"
+
+for(let i = 0 ; i < nizFormSp.length ; i++){
+    formIspis +=`
+        <li><span class="${nizFormSp[i]}"></span>${nizFormli[i]}</li>
+    `;
+}
+formIspis +="</ul>"
+document.querySelector(".more-info").innerHTML = formIspis;
+
+var nizFormHr = ["https://www.facebook.com/facebook/","https://www.instagram.com/","https://twitter.com/i/flow/login","https://www.pinterest.com/","#","sitemap.xml"];
+var nizFromCl = ["ion-social-facebook","ion-social-instagram","ion-social-twitter","ion-social-pinterest","ion-android-document","ion-map"];
+
+var formIspis1 = "<ul>"
+
+for(let i = 0 ; i < nizFormHr.length ; i++){
+    formIspis1 +=`
+        <li><a href="${nizFormHr[i]}" target="_blank"><span class="ico-circle"><i class="${nizFromCl[i]}"></i></span></a></li>
+    `;
+}
+formIspis1 += "</ul>"
+document.querySelector(".socials").innerHTML = formIspis1;
+
+//-----------------------------------------------------------------------------------------
+
+var errors = 0
+window.onload = function(){
+    let button = document.querySelector("#send");
+    button.addEventListener("click", processingForm);
+}
+
+function processingForm(){
+    let flName, Email, Subject, Message;
+
+    flName = document.querySelector("#name");
+    Email = document.querySelector("#email");
+    Subject = document.querySelector("#subject");
+    Message = document.querySelector("#message");
+
+    let reflName, reEmail, reSubject;
+
+    reflName = /^[A-Z][a-z]{2,14}(\s[A-Z][a-z]{2,14})+$/;
+    reEmail = /^[A-Z][a-z]{2,14}$/;
+    reSubject = /^[A-Z][a-z]{2,14}$/;
+    
+    checkRegularExpressions(reflName,flName,"The name and surname was not typed correctly. For example: Rick Astley");
+    checkRegularExpressions(reEmail,Email,"The name and surname was not typed correctly. For example: Rick Astley");
+    checkRegularExpressions(reSubject,Subject,"The name of the subject is not typed correctly. For example: Promotion")
+
+    if(Message.value.length < 15){
+        Message.nextElementSibling.classList.remove("HidenS");
+        Message.nextElementSibling.innerHTML = "There must be at last 15 characters.";
+        Message.classList.add("border-red")
+        errors++;
+    }
+    else{
+        Message.nextElementSibling.classList.add("HidenS");
+        Message.nextElementSibling.innerHTML = "";
+        Message.classList.remowe("border-red");
+    }
+
+    console.log(errors);
+
+    if(errors == 0){
+        let prints = document.querySelector("#print");
+        prints.setAttribute("class", "alert alert-succes mt-4")
+
+        let formprint = "";
+        formprint += `<p>First/last name: ${flName.value}<p>
+        <p>Email: ${Email.value}<p>
+        <p>Subject: ${Subject.value}<p>
+        <p>Message: ${Message.value}<p>`;
+
+        prints.innerHTML = formprint;
+        
+        document.getElementById("form-send").reset();
+    }
+}
+
+function checkRegularExpressions(re, obj, mess){
+    if(!re.test(obj.value)){
+        obj.nextElementSibling.classList.remowe("HidenS");
+        obj.nextElementSibling.innerHTML = mess;
+        obj.classList.add("border-red")
+        errors++;
+    }
+    else{
+        obj.nextElementSibling.classList.add("HidenS");
+        obj.nextElementSibling.innerHTML = "";
+        obj.classList.remowe("border-red")
+    }
+}
 
