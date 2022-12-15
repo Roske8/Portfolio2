@@ -213,71 +213,71 @@ document.querySelector(".socials").innerHTML = formIspis1;
 
 //-----------------------------------------------------------------------------------------
 
-var errors = 0
-window.onload = function(){
-    let button = document.querySelector("#send");
-    button.addEventListener("click", processingForm);
-}
+// var errors = 0
+// window.onload = function(){
+//     let button = document.querySelector("#send");
+//     button.addEventListener("click", processingForm);
+// }
 
-function processingForm(){
-    let flName, Email, Subject, Message;
+// function processingForm(){
+//     let flName, Email, Subject, Message;
 
-    flName = document.querySelector("#name");
-    Email = document.querySelector("#email");
-    Subject = document.querySelector("#subject");
-    Message = document.querySelector("#message");
+//     flName = document.querySelector("#name");
+//     Email = document.querySelector("#email");
+//     Subject = document.querySelector("#subject");
+//     Message = document.querySelector("#message");
 
-    let reflName, reEmail, reSubject;
+//     let reflName, reEmail, reSubject;
 
-    reflName = /^[A-Z][a-z]{2,14}(\s[A-Z][a-z]{2,14})+$/;
-    reEmail = /^[A-Z][a-z]{2,14}$/;
-    reSubject = /^[A-Z][a-z]{2,14}$/;
+//     reflName = /^[A-Z][a-z]{2,14}(\s[A-Z][a-z]{2,14})+$/;
+//     reEmail = /^[A-Z][a-z]{2,14}$/;
+//     reSubject = /^[A-Z][a-z]{2,14}$/;
     
-    checkRegularExpressions(reflName,flName,"The name and surname was not typed correctly. For example: Rick Astley");
-    checkRegularExpressions(reEmail,Email,"The name and surname was not typed correctly. For example: Rick Astley");
-    checkRegularExpressions(reSubject,Subject,"The name of the subject is not typed correctly. For example: Promotion")
+//     checkRegularExpressions(reflName,flName,"The name and surname was not typed correctly. For example: Rick Astley");
+//     checkRegularExpressions(reEmail,Email,"The name and surname was not typed correctly. For example: Rick Astley");
+//     checkRegularExpressions(reSubject,Subject,"The name of the subject is not typed correctly. For example: Promotion")
 
-    if(Message.value.length < 15){
-        Message.nextElementSibling.classList.remove("HidenS");
-        Message.nextElementSibling.innerHTML = "There must be at last 15 characters.";
-        Message.classList.add("border-red")
-        errors++;
-    }
-    else{
-        Message.nextElementSibling.classList.add("HidenS");
-        Message.nextElementSibling.innerHTML = "";
-        Message.classList.remowe("border-red");
-    }
+//     if(Message.value.length < 15){
+//         Message.nextElementSibling.classList.remove("HidenS");
+//         Message.nextElementSibling.innerHTML = "There must be at last 15 characters.";
+//         Message.classList.add("border-red")
+//         errors++;
+//     }
+//     else{
+//         Message.nextElementSibling.classList.add("HidenS");
+//         Message.nextElementSibling.innerHTML = "";
+//         Message.classList.remowe("border-red");
+//     }
 
-    console.log(errors);
+//     console.log(errors);
 
-    if(errors == 0){
-        let prints = document.querySelector("#print");
-        prints.setAttribute("class", "alert alert-succes mt-4")
+//     if(errors == 0){
+//         let prints = document.querySelector("#print");
+//         prints.setAttribute("class", "alert alert-succes mt-4")
 
-        let formprint = "";
-        formprint += `<p>First/last name: ${flName.value}<p>
-        <p>Email: ${Email.value}<p>
-        <p>Subject: ${Subject.value}<p>
-        <p>Message: ${Message.value}<p>`;
+//         let formprint = "";
+//         formprint += `<p>First/last name: ${flName.value}<p>
+//         <p>Email: ${Email.value}<p>
+//         <p>Subject: ${Subject.value}<p>
+//         <p>Message: ${Message.value}<p>`;
 
-        prints.innerHTML = formprint;
+//         prints.innerHTML = formprint;
         
-        document.getElementById("form-send").reset();
-    }
-}
+//         document.getElementById("form-send").reset();
+//     }
+// }
 
-function checkRegularExpressions(re, obj, mess){
-    if(!re.test(obj.value)){
-        obj.nextElementSibling.classList.remowe("HidenS");
-        obj.nextElementSibling.innerHTML = mess;
-        obj.classList.add("border-red")
-        errors++;
-    }
-    else{
-        obj.nextElementSibling.classList.add("HidenS");
-        obj.nextElementSibling.innerHTML = "";
-        obj.classList.remowe("border-red")
-    }
-}
+// function checkRegularExpressions(re, obj, mess){
+//     if(!re.test(obj.value)){
+//         obj.nextElementSibling.classList.remowe("HidenS");
+//         obj.nextElementSibling.innerHTML = mess;
+//         obj.classList.add("border-red")
+//         errors++;
+//     }
+//     else{
+//         obj.nextElementSibling.classList.add("HidenS");
+//         obj.nextElementSibling.innerHTML = "";
+//         obj.classList.remowe("border-red")
+//     }
+// }
 
