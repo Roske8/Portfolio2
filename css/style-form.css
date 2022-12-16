@@ -2,5 +2,5 @@
     display: none;
 }
 .border-red{
-    border: 1px solid #ff0000;
+    border-style: 1px solid #ff0000;
 }
