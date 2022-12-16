@@ -213,7 +213,7 @@ document.querySelector(".socials").innerHTML = formIspis1;
 
 //-----------------------------------------------------------------------------------------
 
-var errors = 0
+
 window.onload = Start();
 
 function Start(){
@@ -221,36 +221,55 @@ function Start(){
     button.addEventListener("click", processingForm);
 }
 function processingForm(){
-    let flName, Email, Subject, Message;
+    var errors = 0
+    let flName, Email, Subject, Message, supp = 1;
 
     flName = document.querySelector("#name");
     Email = document.querySelector("#email");
     Subject = document.querySelector("#subject");
     Message = document.querySelector("#message");
+    nizRadBtn = document.getElementsByName("flexRadioDefault");
+    CheckBox = document.getElementById("flexCheckDefault");
     
     var reflName, reEmail, reSubject;
 
     reflName = /^[A-Z][a-z]{2,14}(\s[A-Z][a-z]{2,14})+$/;
-    reEmail = /^[A-Z][a-z]{2,14}$/;
+    reEmail = /^[a-z]+([\.]?[a-z]*[\d]*)*\@[a-z]+([\.]?[a-z]+)*(\.[a-z]{2,3})+$/;
     reSubject = /^[A-Z][a-z]{2,14}$/;
     
-    checkRegularExpressions(reflName,flName,"The name and surname was not typed correctly. For example: Rick Astley");
-    checkRegularExpressions(reEmail,Email,"The name and surname was not typed correctly. For example: Rick Astley");
-    checkRegularExpressions(reSubject,Subject,"The name of the subject is not typed correctly. For example: Promotion")
+    errors += checkRegularExpressions(reflName,flName,"The name and surname was not typed correctly. For example: Rick Astley");
+    errors += checkRegularExpressions(reEmail,Email,"The Email was not typed correctly. For example: uros23@gmail.com");
+    errors += checkRegularExpressions(reSubject,Subject,"The name of the subject is not typed correctly. For example: Promotion")
+    
+    let StatRad = "";
+    for(let i = 0 ; i < nizRadBtn.length ; i++){
+        if(nizRadBtn[i].checked){
+            StatRad = nizRadBtn[i].value
+            break;
+        }
+    }
+
+    let StatCheck = "";
+    if(CheckBox.checked){
+        StatCheck += CheckBox.value;
+    }
 
     if(Message.value.length < 15){
         Message.nextElementSibling.classList.remove("HidenS");
         Message.nextElementSibling.innerHTML = "There must be at last 15 characters.";
         Message.classList.add("border-red")
-        errors++;
+        supp = 1;
     }
     else{
         Message.nextElementSibling.classList.add("HidenS");
         Message.nextElementSibling.innerHTML = "";
-        Message.classList.add("border-red-correctly");
+        Message.classList.remove("border-red");
+        supp = 0;
     }
 
-    if(errors == 0){
+    errors += supp;
+
+    if(!errors){
         let prints = document.querySelector("#print");
         prints.setAttribute("class", "alert alert-success mb-3");
 
@@ -267,13 +286,12 @@ function checkRegularExpressions(re, obj, mess){
         obj.nextElementSibling.classList.remove("HidenS");
         obj.nextElementSibling.innerHTML = mess;
         obj.classList.add("border-red")
-        errors++;
+        return 1;
     }
     else{
         obj.nextElementSibling.classList.add("HidenS");
         obj.nextElementSibling.innerHTML = "";
-        obj.classList.add("border-red-correctly")
+        obj.classList.remove("border-red");
+        return 0
     }
 }
-
-
