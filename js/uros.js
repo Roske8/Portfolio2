@@ -198,7 +198,7 @@ for(let i = 0 ; i < nizFormSp.length ; i++){
 formIspis +="</ul>"
 document.querySelector(".more-info").innerHTML = formIspis;
 
-var nizFormHr = ["https://www.facebook.com/facebook/","https://www.instagram.com/","https://twitter.com/i/flow/login","https://www.pinterest.com/","#","sitemap.xml"];
+var nizFormHr = ["https://www.facebook.com/facebook/","https://www.instagram.com/","https://twitter.com/i/flow/login","https://www.pinterest.com/","Dokumentacija.pdf","sitemap.xml"];
 var nizFromCl = ["ion-social-facebook","ion-social-instagram","ion-social-twitter","ion-social-pinterest","ion-android-document","ion-map"];
 
 var formIspis1 = "<ul>"
