@@ -257,13 +257,13 @@ function processingForm(){
     if(Message.value.length < 15){
         Message.nextElementSibling.classList.remove("HidenS");
         Message.nextElementSibling.innerHTML = "There must be at last 15 characters.";
-        Message.classList.add("border-red")
+        Message.classList.add("warning")
         supp = 1;
     }
     else{
         Message.nextElementSibling.classList.add("HidenS");
         Message.nextElementSibling.innerHTML = "";
-        Message.classList.remove("border-red");
+        Message.classList.remove("warning");
         supp = 0;
     }
 
@@ -285,13 +285,13 @@ function checkRegularExpressions(re, obj, mess){
     if(!re.test(obj.value)){
         obj.nextElementSibling.classList.remove("HidenS");
         obj.nextElementSibling.innerHTML = mess;
-        obj.classList.add("border-red")
+        obj.classList.add("warning")
         return 1;
     }
     else{
         obj.nextElementSibling.classList.add("HidenS");
         obj.nextElementSibling.innerHTML = "";
-        obj.classList.remove("border-red");
+        obj.classList.remove("warning");
         return 0
     }
 }
