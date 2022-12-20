@@ -250,7 +250,7 @@ function processingForm(){
     }
 
     let StatCheck = "";
-    if(CheckBox.checked){
+    if(CheckBox.checked){ 
         StatCheck += CheckBox.value;
     }
 
