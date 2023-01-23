@@ -211,6 +211,34 @@ for(let i = 0 ; i < nizFormHr.length ; i++){
 formIspis1 += "</ul>"
 document.querySelector(".socials").innerHTML = formIspis1;
 
+// var nizSel = ["Choose type of web site","Static","Dynamic","What is that?"];
+// var nizVal = ["CTW","ST","DM","WT"];
+// var sel = "<select class='custom-select my-1 mr-sm-2' id='inlineFormCustomSelectPref'>"
+            
+// for(let i = 0 ; i<nizSel.length ; i++){
+//     sel +=`
+//     <option value="${nizVal[i]}">${nizSel[i]}</option>
+//     `;
+// }
+// sel += "</select> <p class='alert alert-danger mb-3 HidenS marginTopS'></p>"
+
+// document.querySelector("#dropDownList").innerHTML = sel;
+
+var radioButtonId = ["flexRadioDefault1","flexRadioDefault2"];
+var radioButtonLabel = ["Business","I just want a website"]
+var radioButtonChecked = ["","checked"];
+var radioButtonFor = "";
+for(let i = 0 ; i < radioButtonId.length ; i++){
+    radioButtonFor += `
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="${radioButtonId[i]}" ${radioButtonChecked[i]}>
+            <label class="form-check-label" for="${radioButtonId[i]}"> ${radioButtonLabel[i]} </label>
+        </div>
+    `;
+}
+
+document.querySelector("#radioButtonID").innerHTML = radioButtonFor;
+
 //-----------------------------------------------------------------------------------------
 
 
@@ -219,10 +247,75 @@ window.onload = Start();
 function Start(){
     let button = document.querySelector("#send");
     button.addEventListener("click", processingForm);
+
+    var flName, Email, Subject, Message;
+    var reflName, reEmail, reSubject;
+    flName = document.querySelector("#name");
+    Email = document.querySelector("#email");
+    Subject = document.querySelector("#subject");
+    Message = document.querySelector("#message");
+    reflName = /^[A-Z][a-z]{2,14}(\s[A-Z][a-z]{2,14})+$/;
+    reEmail = /^[a-z]+([\.]?[a-z]*[\d]*)*\@[a-z]+([\.]?[a-z]+)*(\.[a-z]{2,3})+$/;
+    reSubject = /^[A-Z][a-z]{2,14}$/;
+    var messName = "The name and surname was not typed correctly. <br/> For example: Rick Astley";
+    var messEmail = "The Email was not typed correctly. <br/> For example: uros23@gmail.com";
+    var messSubject = "The name of the subject is not typed correctly. <br/> For example: Promotion";
+
+    document.querySelector("#name").addEventListener("blur", function(){
+        if(!reflName.test(flName.value)){
+            flName.nextElementSibling.classList.remove("HidenS");
+            flName.nextElementSibling.innerHTML = messName;
+            flName.classList.add("warning")
+        }
+        else{
+            flName.nextElementSibling.classList.add("HidenS");
+            flName.nextElementSibling.innerHTML = "";
+            flName.classList.remove("warning");
+        }
+    });
+
+    document.querySelector("#email").addEventListener("blur", function(){
+        if(!reEmail.test(Email.value)){
+            Email.nextElementSibling.classList.remove("HidenS");
+            Email.nextElementSibling.innerHTML = messEmail;
+            Email.classList.add("warning")
+        }
+        else{
+            Email.nextElementSibling.classList.add("HidenS");
+            Email.nextElementSibling.innerHTML = "";
+            Email.classList.remove("warning");
+        }
+    });
+
+    document.querySelector("#subject").addEventListener("blur", function(){
+        if(!reSubject.test(Subject.value)){
+            Subject.nextElementSibling.classList.remove("HidenS");
+            Subject.nextElementSibling.innerHTML = messSubject;
+            Subject.classList.add("warning")
+        }
+        else{
+            Subject.nextElementSibling.classList.add("HidenS");
+            Subject.nextElementSibling.innerHTML = "";
+            Subject.classList.remove("warning");
+        }
+    });
+
+    document.querySelector("#message").addEventListener("blur", function(){
+        if(Message.value.length < 15){
+            Message.nextElementSibling.classList.remove("HidenS");
+            Message.nextElementSibling.innerHTML = "There must be at last 15 characters.";
+            Message.classList.add("warning")
+        }
+        else{
+            Message.nextElementSibling.classList.add("HidenS");
+            Message.nextElementSibling.innerHTML = "";
+            Message.classList.remove("warning");
+        }
+    });
 }
 function processingForm(){
     var errors = 0
-    let flName, Email, Subject, Message, supp = 1;
+    let flName, Email, Subject, Message, Ddown , supp = 1, supp2 = 1;
 
     flName = document.querySelector("#name");
     Email = document.querySelector("#email");
@@ -230,7 +323,8 @@ function processingForm(){
     Message = document.querySelector("#message");
     nizRadBtn = document.getElementsByName("flexRadioDefault");
     CheckBox = document.getElementById("flexCheckDefault");
-    
+    Ddown = document.querySelector("#inlineFormCustomSelectPref")
+
     var reflName, reEmail, reSubject;
 
     reflName = /^[A-Z][a-z]{2,14}(\s[A-Z][a-z]{2,14})+$/;
@@ -239,7 +333,7 @@ function processingForm(){
     
     errors += checkRegularExpressions(reflName,flName,"The name and surname was not typed correctly. For example: Rick Astley");
     errors += checkRegularExpressions(reEmail,Email,"The Email was not typed correctly. For example: uros23@gmail.com");
-    errors += checkRegularExpressions(reSubject,Subject,"The name of the subject is not typed correctly. For example: Promotion")
+    errors += checkRegularExpressions(reSubject,Subject,"The name of the subject is not typed correctly. For example: Promotion");
     
     let StatRad = "";
     for(let i = 0 ; i < nizRadBtn.length ; i++){
@@ -267,6 +361,22 @@ function processingForm(){
         supp = 0;
     }
 
+    let dropDownList = Ddown.options[Ddown.selectedIndex].value;
+
+    if(dropDownList == "0"){
+        Ddown.nextElementSibling.classList.remove("HidenS");
+        Ddown.nextElementSibling.innerHTML = "Choose XXXXXXX"
+        Ddown.classList.add("warning");
+        supp2 = 1;
+    }
+    else{
+        Ddown.nextElementSibling.classList.add("HidenS");
+        Ddown.nextElementSibling.innerHTML = "";
+        Ddown.classList.remove("warning");
+        supp2 = 0;
+    }
+
+    errors += supp2;
     errors += supp;
 
     if(!errors){
@@ -278,6 +388,8 @@ function processingForm(){
         document.getElementById("print");
         document.getElementById("form-send").reset();
     }
+
+    
     console.log(errors);
 }
 

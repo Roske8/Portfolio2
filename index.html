@@ -251,26 +251,35 @@
                         <div class="col-md-12 mb-3">
                           <div class="form-group">
                             <input type="text" name="name" class="form-control" id="name" placeholder="First/last name"/>
-                            <p class="alert alert-danger mb-3 HidenS"></p>
+                            <p class="alert alert-danger mb-3 HidenS marginTopS"></p>
                           </div>
                         </div>
                         <div class="col-md-12 mb-3">
                           <div class="form-group">
                             <input type="email" class="form-control" name="email" id="email" placeholder="Your Email"/>
-                            <p class="alert alert-danger mb-3 HidenS"></p>
+                            <p class="alert alert-danger mb-3 HidenS marginTopS"></p>
                           </div>
                         </div>
                         <div class="col-md-12 mb-3">
                             <div class="form-group">
                               <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject"/>
-                              <p class="alert alert-danger mb-3 HidenS"></p>
+                              <p class="alert alert-danger mb-3 HidenS marginTopS"></p>
                             </div>
                         </div>
                         <div class="col-md-12 mb-3">
                           <div class="form-group">
                             <textarea class="form-control" name="message" placeholder="Message" id="message"></textarea>
-                            <p class="alert alert-danger mb-3 HidenS"></p>
+                            <p class="alert alert-danger mb-3 HidenS marginTopS"></p>
                           </div>
+                        </div>
+                        <div class="col-md-12 mb-3" id="dropDownList">
+                          <select class='custom-select my-1 mr-sm-2' id='inlineFormCustomSelectPref'>
+                            <option value="0">Choose type of web site</option>
+                            <option value="ST">Static</option>
+                            <option value="DM">Dynamic</option>
+                            <option value="WT">What is that?</option>                     
+                          </select>
+                          <p class='alert alert-danger mb-3 HidenS marginTopS'></p>
                         </div>
                         <div class="col-md-12 mb-3">
                           <div class="form-check">
@@ -280,19 +289,7 @@
                             </label>
                           </div>
                         </div>
-                        <div class="col-md-12 mb-3">
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                            <label class="form-check-label" for="flexRadioDefault1">
-                              Business
-                            </label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                            <label class="form-check-label" for="flexRadioDefault2">
-                              I just want a website
-                            </label>
-                          </div>
+                        <div class="col-md-12 mb-3" id="radioButtonID">
                         </div>
                         <p id="print"></p>
                         <div class="col-md-12">
