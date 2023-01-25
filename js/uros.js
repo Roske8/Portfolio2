@@ -133,7 +133,7 @@ for(let i = 0; i < nizSecPorH.length ; i++){
                     <div class="work-img">
                         <img src="${nizSecPorImgSrc[i]}" alt="${nizSecPorImgAlt[i]}" class="img-fluid">
                     </div>
-                    <div class="work-content">//
+                    <div class="work-content">
                         <div class="row">
                             <div class="col-sm-8">
                                 <h2 class="w-title">"${nizSecPorH[i]}"</h2>
@@ -211,18 +211,18 @@ for(let i = 0 ; i < nizFormHr.length ; i++){
 formIspis1 += "</ul>"
 document.querySelector(".socials").innerHTML = formIspis1;
 
-// var nizSel = ["Choose type of web site","Static","Dynamic","What is that?"];
-// var nizVal = ["CTW","ST","DM","WT"];
-// var sel = "<select class='custom-select my-1 mr-sm-2' id='inlineFormCustomSelectPref'>"
+var nizSel = ["Choose type of web site","Static","Dynamic","What is that?"];
+var nizVal = ["0","ST","DM","WT"];
+var sel = "<select class='custom-select my-1 mr-sm-2' id='inlineFormCustomSelectPref'>"
             
-// for(let i = 0 ; i<nizSel.length ; i++){
-//     sel +=`
-//     <option value="${nizVal[i]}">${nizSel[i]}</option>
-//     `;
-// }
-// sel += "</select> <p class='alert alert-danger mb-3 HidenS marginTopS'></p>"
+for(let i = 0 ; i<nizSel.length ; i++){
+    sel +=`
+    <option value="${nizVal[i]}">${nizSel[i]}</option>
+    `;
+}
+sel += "</select> <p class='alert alert-danger mb-3 HidenS marginTopS'></p>"
 
-// document.querySelector("#dropDownList").innerHTML = sel;
+document.querySelector("#dropDownList").innerHTML = sel;
 
 var radioButtonId = ["flexRadioDefault1","flexRadioDefault2"];
 var radioButtonLabel = ["Business","I just want a website"]
@@ -254,6 +254,7 @@ function Start(){
     Email = document.querySelector("#email");
     Subject = document.querySelector("#subject");
     Message = document.querySelector("#message");
+    Ddown = document.querySelector("#inlineFormCustomSelectPref")
     reflName = /^[A-Z][a-z]{2,14}(\s[A-Z][a-z]{2,14})+$/;
     reEmail = /^[a-z]+([\.]?[a-z]*[\d]*)*\@[a-z]+([\.]?[a-z]+)*(\.[a-z]{2,3})+$/;
     reSubject = /^[A-Z][a-z]{2,14}$/;
@@ -312,6 +313,22 @@ function Start(){
             Message.classList.remove("warning");
         }
     });
+
+
+    document.querySelector("#inlineFormCustomSelectPref").addEventListener("change", function(){
+        var dropDownList = Ddown.options[Ddown.selectedIndex].value;
+        if(dropDownList == "0"){
+            Ddown.nextElementSibling.classList.remove("HidenS");
+            Ddown.nextElementSibling.innerHTML = "Choose something from the list";
+            Ddown.classList.add("warning");
+        }
+        else{
+            Ddown.nextElementSibling.classList.add("HidenS");
+            Ddown.nextElementSibling.innerHTML = "";
+            Ddown.classList.remove("warning");
+        }
+    });
+
 }
 function processingForm(){
     var errors = 0
@@ -361,11 +378,11 @@ function processingForm(){
         supp = 0;
     }
 
-    let dropDownList = Ddown.options[Ddown.selectedIndex].value;
+    var dropDownList = Ddown.options[Ddown.selectedIndex].value;
 
     if(dropDownList == "0"){
         Ddown.nextElementSibling.classList.remove("HidenS");
-        Ddown.nextElementSibling.innerHTML = "Choose XXXXXXX"
+        Ddown.nextElementSibling.innerHTML = "Choose something from the list";
         Ddown.classList.add("warning");
         supp2 = 1;
     }
@@ -407,3 +424,5 @@ function checkRegularExpressions(re, obj, mess){
         return 0
     }
 }
+
+// PRVO SE U INDEXU STAVI LINK OD QUERIJA PA TEK ONDA OD JAVA SCRIPTA
