@@ -7,3 +7,21 @@
 .marginTopS{
     margin-top: 15px;
 }
+#back-Top{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    background-color: #fff;
+    border-style: solid;
+    border-color: #007bff;
+    border-width: 4px ;
+}
+#arrow{
+    margin-top: 22%;
+    margin-left: 26%;
+    font-size: 20px;
+    color: #1e1e1e;
+}

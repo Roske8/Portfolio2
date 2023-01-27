@@ -301,7 +301,23 @@ function Start(){
             $(this).html("Show more");
         }
         count++;
-});
+    });
+
+    $("#back-Top").hide();
+
+    $(window).scroll(function(){
+        if ($(this).scrollTop() > 1500) {
+            $("#back-Top").fadeIn("slow");
+          } else {
+            $("#back-Top").fadeOut("slow");
+          }
+    });
+    $("#back-Top").click(function(){
+        $("html").animate({
+            scrollTop: 0
+        }, 1000)
+    });
+
 }
 function processingForm(){
     var errors = 0
