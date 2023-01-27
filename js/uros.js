@@ -55,11 +55,20 @@ nizLeadPIspis += "<div class='title-box-2'> <h5 class='title-left'> About me </h
 var nizLeadP = ["I am 21 years old. I live in Serbia and I'm from Belgrade. I want to help my clients to the best of my ability and also the best corporation.", "Although I'm still studying at the university of vocational studies for information and communication technologies, I had a lot of experience with work.", "In addition to programming, I also do graphic design, photography and marketing."];
 
 for(let i = 0; i < nizLeadP.length ; i++){
-    nizLeadPIspis +=`
+    if(i==2){
+        nizLeadPIspis +=`
+        <p class="lead" id="moreInfo">
+            ${nizLeadP[i]}
+        </p><a href="#" id="buttonMore" class="btn btn-primary">Read more</a>
+    `;
+    }
+    else{
+        nizLeadPIspis +=`
         <p class="lead">
             ${nizLeadP[i]}
         </p>
     `;
+    }
 }
 document.querySelector(".about-me").innerHTML = nizLeadPIspis;
 
@@ -89,31 +98,6 @@ for(let i = 0; i < nizIcon.length ; i++){
     `;
 }
 document.querySelector("#sec-serv").innerHTML = nizSerIspis;
-
-// var nizDivCB = ["counter-box","counter-box pt-4 pt-md-0","counter-box pt-4 pt-md-0","counter-box pt-4 pt-md-0"];
-// var nizSpanI = ["ion-checkmark-round","ion-ios-calendar-outline","ion-ios-people","ion-ribbon-a"];
-// var nizDivP = ["450","15","550","36"];
-// var nizSpan = ["WORKS COMPLETED","YEARS OF EXPERIENCE","TOTAL CLIENTS","AWARD WON"];
-
-// var nizSerIspis2 = "";
-
-// for(let i = 0 ; i < nizDivCB.length ; i++){
-//     nizSerIspis2 +=`
-//         <div class="col-sm-3 col-lg-3">
-//             <div class="counter-box">
-//                 <div class="${nizDivCB[i]}">
-//                     <span class="ico-circle"><i class="${nizSpanI[i]}"></i></span>
-//                 </div>
-//                 <div class="counter-num">
-//                     <p class="counter">${nizDivP[i]}</p>
-//                     <span class="counter-text">${nizSpan[i]}</span>
-//                 </div>
-//             </div>
-//         </div>
-//     `;
-// }
-// document.querySelector("#sec-ser-row").innerHTML = nizSerIspis2;
-
 //--------------------------------- Portfolio ---------------------------------
 
 var nizSecPorHr = ["img/work-1.jpg",""];
@@ -154,32 +138,6 @@ for(let i = 0; i < nizSecPorH.length ; i++){
     `;
 }
 document.querySelector("#por-row").innerHTML = nizSecPorIspis;
-
-// var nizSecTestSrc = ["img/testimonial-2.jpg","img/testimonial-4.jpg"];
-// var nizSecTestAlt = ["#","#"];
-// var nizSecTestS = ["Xavi Alonso","Marta Socrate"];
-// var nizSecTestP = ["Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Lorem ipsum dolor sit amet,consectetur adipiscing elit.",];
-
-// var nizSecIspis = "";
-
-// for(let i = 0; i < nizSecTestSrc.length ; i++){
-//     nizSecIspis +=`
-//         <div class="testimonial-box">
-//             <div class="author-test">
-//                 <img src="${nizSecTestSrc[i]}" alt="${nizSecTestAlt[i]}" class="rounded-circle b-shadow-a">
-//                 <span class="author">${nizSecTestS[i]}</span>
-//             </div>
-//             <div class="content-test">
-//                 <p class="description lead">
-//                     ${nizSecTestP[i]}
-//                 </p>
-//                 <span class="comit"><i class="fa fa-quote-right"></i></span>
-//             </div>
-//         </div>
-//     `;
-// }
-// document.querySelector("#testimonial-mf").innerHTML = nizSecIspis;
-
 
 //--------------------------------- Forma ---------------------------------
 
@@ -329,6 +287,21 @@ function Start(){
         }
     });
 
+    $("#moreInfo").hide();
+    var count = 0;
+
+    $("#buttonMore").click(function(x){
+        x.preventDefault();
+        if(count % 2 == 0){
+            $("#moreInfo").show();
+            $(this).html("Hide");
+        }
+        else{
+            $("#moreInfo").hide();
+            $(this).html("Show more");
+        }
+        count++;
+});
 }
 function processingForm(){
     var errors = 0
@@ -425,4 +398,3 @@ function checkRegularExpressions(re, obj, mess){
     }
 }
 
-// PRVO SE U INDEXU STAVI LINK OD QUERIJA PA TEK ONDA OD JAVA SCRIPTA
